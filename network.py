@@ -13,8 +13,6 @@ from generator import TopKGenerator
 from util.engine import evaluate, evaluate_generation
 from util.misc import str2bool
 
-seed = 42
-
 
 def model_config():
     """
@@ -31,12 +29,12 @@ def model_config():
 
     # Network
     net_arg = parser.add_argument_group("Model")
-    net_arg.add_argument("--embed_size", type=int, default=300)   # 300
-    net_arg.add_argument("--hidden_size", type=int, default=800)  # 800
+    net_arg.add_argument("--embed_size", type=int, default=300)
+    net_arg.add_argument("--hidden_size", type=int, default=800)
     net_arg.add_argument("--bidirectional", type=str2bool, default=True)
-    net_arg.add_argument("--max_vocab_size", type=int, default=15000)   # 30000
+    net_arg.add_argument("--max_vocab_size", type=int, default=15000)
     net_arg.add_argument("--min_len", type=int, default=1)
-    net_arg.add_argument("--max_len", type=int, default=512)    # 500
+    net_arg.add_argument("--max_len", type=int, default=512)
     net_arg.add_argument("--num_layers", type=int, default=2)
     net_arg.add_argument("--attn", type=str, default='mlp',
                          choices=['none', 'mlp', 'dot', 'general'])
@@ -47,10 +45,10 @@ def model_config():
     # Training / Testing
     train_arg = parser.add_argument_group("Training")
     train_arg.add_argument("--optimizer", type=str, default="Adam")
-    train_arg.add_argument("--lr", type=float, default=0.0001)   # 0.00005
+    train_arg.add_argument("--lr", type=float, default=0.0001)
     train_arg.add_argument("--grad_clip", type=float, default=5.0)
     train_arg.add_argument("--dropout", type=float, default=0.5)
-    train_arg.add_argument("--num_epochs", type=int, default=10)   # 20
+    train_arg.add_argument("--num_epochs", type=int, default=10)
     train_arg.add_argument("--stage", type=int, choices=[0, 1], default=0)
     train_arg.add_argument("--use_embed", type=str2bool, default=True)
     train_arg.add_argument("--use_bow", type=str2bool, default=True)
@@ -68,11 +66,11 @@ def model_config():
     # MISC
     misc_arg = parser.add_argument_group("Misc")
     misc_arg.add_argument("--gpu", type=int, default=0)
-    misc_arg.add_argument("--log_steps", type=int, default=70)   # 50
+    misc_arg.add_argument("--log_steps", type=int, default=70)
     misc_arg.add_argument("--valid_steps", type=int, default=350)
     misc_arg.add_argument("--batch_size", type=int, default=32)   # The actual batch size is batch_size * accum_steps
-    misc_arg.add_argument("--ckpt", type=str)   # default="./models/best_1.model"
-    misc_arg.add_argument("--test", action="store_true")  # default=True
+    misc_arg.add_argument("--ckpt", type=str)
+    misc_arg.add_argument("--test", action="store_true")
     misc_arg.add_argument("--interact", action="store_true")
 
     config = parser.parse_args()
@@ -89,9 +87,7 @@ def main():
     device = config.gpu
     if device >= 0:
         torch.cuda.set_device(device)
-    # seed
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
+
     # Data definition
     corpus = KnowledgeCorpus(data_dir=config.data_dir, data_prefix=config.data_prefix,
                              min_freq=0, max_vocab_size=config.max_vocab_size,
