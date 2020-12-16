@@ -316,7 +316,7 @@ class GOKC(BaseModel):
             assert optimizer is not None
             optimizer.zero_grad()
             loss.backward()
-            if grad_clip is not None and grad_clip > 0:   # 梯度裁剪
+            if grad_clip is not None and grad_clip > 0:
                 clip_grad_norm_(parameters=self.parameters(),
                                 max_norm=grad_clip)
             optimizer.step()
