@@ -22,6 +22,4 @@ We use two datasets to implement our experiment, one is DuConv and the other is 
 ## Training & Testing ##
 * We train our model on a single Nvidia Testla V100 machine. You can run ``bash run_train.sh`` to train the model with the default settings. 
 * After the training procedure, you can run ``bash run_test.sh`` to test the model. 
-* The training and testing data (DuConv or DuRecDial) can be changed through the argument ``data`` in both ``run_train.sh`` and ``run_test.sh``. 
-* The testing data can either be ``dev`` or ``test``, which can be changed through the ``datapart`` in run_test.sh. 
- 
+* The training and testing data (DuConv or DuRecDial) can be changed through the argument ``data`` in both ``run_train.sh`` and ``run_test.sh``.  
