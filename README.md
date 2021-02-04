@@ -1,6 +1,6 @@
 # README #
 ----
-The experimental resources for AAAI-2021 paper ''Learning to Copy Coherent Knowledge for Response Generation.''
+Codes for AAAI2021 paper ''Learning to Copy Coherent Knowledge for Response Generation.''
 
 ## Requirements ##
 
@@ -10,7 +10,7 @@ The experimental resources for AAAI-2021 paper ''Learning to Copy Coherent Knowl
 * torch==1.7.1
 
 ## Datasets ##
-We use two datasets to implement our experiment, one is DuConv and the other is DuRecDial. Both of them are in the directory: ``./data/resource/``. If you need the original dataset, please check the cited papers:
+We use two datasets to implement our experiment, one is DuConv and the other is DuRecDial. Put the data under ``data/resource/<DuConv/DuRecDial>`` folder and rename them train/dev/test.txt. (e.g. /data/resource/DuConv/test.txt). The data can be downloaded through the following papers:
 
 **DuConv**: 
 > Wu, W.; Guo, Z.; Zhou, X.; Wu, H.; Zhang, X.; Lian, R.;
@@ -24,10 +24,4 @@ We use two datasets to implement our experiment, one is DuConv and the other is 
 * After the training procedure, you can run ``bash run_test.sh`` to test the model. 
 * The training and testing data (DuConv or DuRecDial) can be changed through the argument ``data`` in both ``run_train.sh`` and ``run_test.sh``. 
 * The testing data can either be ``dev`` or ``test``, which can be changed through the ``datapart`` in run_test.sh. 
-* The hyperparameters can be tuned in the ``network.py``. 
-
  
-
-
-
-
