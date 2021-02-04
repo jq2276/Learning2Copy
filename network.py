@@ -68,7 +68,7 @@ def model_config():
     misc_arg.add_argument("--gpu", type=int, default=0)
     misc_arg.add_argument("--log_steps", type=int, default=70)
     misc_arg.add_argument("--valid_steps", type=int, default=350)
-    misc_arg.add_argument("--batch_size", type=int, default=32)   # The actual batch size is batch_size * accum_steps
+    misc_arg.add_argument("--batch_size", type=int, default=32)
     misc_arg.add_argument("--ckpt", type=str)
     misc_arg.add_argument("--test", action="store_true")
     misc_arg.add_argument("--interact", action="store_true")
